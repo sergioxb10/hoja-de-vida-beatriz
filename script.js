@@ -29,5 +29,12 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-document.querySelector("#print-cv").addEventListener("click", () => window.print());
+document.querySelectorAll(".print-cv").forEach((button) => {
+  button.addEventListener("click", () => {
+    document.body.classList.remove("menu-open");
+    menuButton.setAttribute("aria-expanded", "false");
+    window.print();
+  });
+});
+
 document.querySelector("#year").textContent = new Date().getFullYear();
